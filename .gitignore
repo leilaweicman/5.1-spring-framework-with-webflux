@@ -1,0 +1,80 @@
+### Build ###
+target/
+out/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### Maven ###
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+.mvn/wrapper/maven-wrapperDownloader.java
+logs/
+dependency-reduced-pom.xml
+
+### Gradle (por si algún IDE crea archivos) ###
+.gradle/
+gradle-app.setting
+*.gradle
+gradlew
+gradlew.bat
+
+### IDEs ###
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Eclipse / STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans/
+.sts4-cache/
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/
+
+### Operating system ###
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+### Java ###
+*.class
+*.log
+*.ctxt
+
+### Docker ###
+*.pid
+
+### Security ###
+# NEVER commit credentials or keys
+application.properties
+application.yml
+application-local.properties
+application-local.yml
+.env
+
+# Permit template files only
+!src/main/resources/application-example.yml
+!src/main/resources/application-example.properties
+
+### Other ###
+HELP.md
