@@ -13,6 +13,4 @@ public interface PlayerService {
     Mono<Player> findById(Long playerId);
 
     Flux<Player> getRanking();
-
-    Mono<Player> save(Player player);
 }

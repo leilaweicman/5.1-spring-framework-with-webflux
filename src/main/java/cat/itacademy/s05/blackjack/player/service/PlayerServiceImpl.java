@@ -53,9 +53,4 @@ public class PlayerServiceImpl implements PlayerService {
         return playerRepository.findAll()
                 .sort(PlayerRanking.BY_RANK);
     }
-
-    @Override
-    public Mono<Player> save(Player player) {
-        return playerRepository.save(player);
-    }
 }
