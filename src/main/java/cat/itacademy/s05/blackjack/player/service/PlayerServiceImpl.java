@@ -1,6 +1,7 @@
 package cat.itacademy.s05.blackjack.player.service;
 
 import cat.itacademy.s05.blackjack.domain.player.Player;
+import cat.itacademy.s05.blackjack.player.exception.PlayerNotFoundException;
 import cat.itacademy.s05.blackjack.player.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,8 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Mono<Player> findById(Long playerId) {
-        return playerRepository.findById(playerId);
+        return playerRepository.findById(playerId)
+                .switchIfEmpty(Mono.error(new PlayerNotFoundException(playerId)));
     }
 
     @Override
