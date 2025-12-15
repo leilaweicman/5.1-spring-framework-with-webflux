@@ -1,10 +1,17 @@
 package cat.itacademy.s05.blackjack.player.service;
 
 import cat.itacademy.s05.blackjack.domain.player.Player;
+import cat.itacademy.s05.blackjack.player.repository.PlayerRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Service
+@RequiredArgsConstructor
 public class PlayerServiceImpl implements PlayerService {
+    private final PlayerRepository playerRepository;
+
     @Override
     public Mono<Player> createPlayer(String name) {
         return null;
@@ -17,7 +24,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Mono<Player> findById(Long playerId) {
-        return null;
+        return playerRepository.findById(playerId);
     }
 
     @Override
@@ -27,6 +34,6 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Mono<Player> save(Player player) {
-        return null;
+        return playerRepository.save(player);
     }
 }
