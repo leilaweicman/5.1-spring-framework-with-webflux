@@ -1,6 +1,7 @@
 package cat.itacademy.s05.blackjack.player.service;
 
 import cat.itacademy.s05.blackjack.domain.player.Player;
+import cat.itacademy.s05.blackjack.player.domain.PlayerRanking;
 import cat.itacademy.s05.blackjack.player.exception.PlayerAlreadyExistsException;
 import cat.itacademy.s05.blackjack.player.exception.PlayerNotFoundException;
 import cat.itacademy.s05.blackjack.player.repository.PlayerRepository;
@@ -49,7 +50,8 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Flux<Player> getRanking() {
-        return null;
+        return playerRepository.findAll()
+                .sort(PlayerRanking.BY_RANK);
     }
 
     @Override
