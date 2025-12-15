@@ -1,0 +1,18 @@
+package cat.itacademy.s05.blackjack.player.service;
+
+import cat.itacademy.s05.blackjack.domain.player.Player;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+public interface PlayerService {
+
+    Mono<Player> createPlayer(String name);
+
+    Mono<Player> updatePlayerName(Long playerId, String newName);
+
+    Mono<Player> findById(Long playerId);
+
+    Flux<Player> getRanking();
+
+    Mono<Player> save(Player player);
+}
