@@ -8,7 +8,7 @@ public interface PlayerService {
 
     Mono<Player> createPlayer(String name);
 
-    Mono<Player> updatePlayerName(Long playerId, String newName);
+    Mono<Player> updatePlayerName(Long playerId, String name);
 
     Mono<Player> findById(Long playerId);
 

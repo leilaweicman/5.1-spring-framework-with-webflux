@@ -32,8 +32,13 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Mono<Player> updatePlayerName(Long playerId, String newName) {
-        return null;
+    public Mono<Player> updatePlayerName(Long playerId, String name) {
+        return playerRepository.findById(playerId)
+                .switchIfEmpty((Mono.error(new PlayerNotFoundException(playerId))))
+                .flatMap(player -> {
+                    player.setName(name);
+                    return playerRepository.save(player);
+                });
     }
 
     @Override
