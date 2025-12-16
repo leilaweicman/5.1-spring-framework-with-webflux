@@ -5,7 +5,9 @@ import cat.itacademy.s05.blackjack.domain.deck.Deck;
 import cat.itacademy.s05.blackjack.domain.game.Game;
 import cat.itacademy.s05.blackjack.domain.game.GameStatus;
 import cat.itacademy.s05.blackjack.domain.hand.Hand;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BlackJackEngine {
 
     /**
