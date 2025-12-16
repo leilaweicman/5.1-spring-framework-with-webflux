@@ -3,6 +3,7 @@ package cat.itacademy.s05.blackjack.game.service;
 import cat.itacademy.s05.blackjack.domain.engine.BlackJackEngine;
 import cat.itacademy.s05.blackjack.domain.game.Game;
 import cat.itacademy.s05.blackjack.game.repository.GameRepository;
+import cat.itacademy.s05.blackjack.player.exception.PlayerNotFoundException;
 import cat.itacademy.s05.blackjack.player.service.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,12 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Mono<Game> createGame(Long playerId) {
-        return null;
+        return playerService.findById(playerId)
+                .switchIfEmpty(Mono.error(new PlayerNotFoundException(playerId)))
+                .flatMap(player -> {
+                    Game game = engine.startNewGame(playerId);
+                    return gameRepository.save(game);
+                });
     }
 
     @Override
