@@ -49,10 +49,11 @@
 
         <!-- R2DBC MySQL Driver -->
         <dependency>
-            <groupId>dev.miku</groupId>
-            <artifactId>r2dbc-mysql</artifactId>
-            <version>0.8.2.RELEASE</version>
+            <groupId>com.github.jasync-sql</groupId>
+            <artifactId>jasync-r2dbc-mysql</artifactId>
+            <version>2.2.3</version>
         </dependency>
+
 
         <!-- Lombok -->
         <dependency>
