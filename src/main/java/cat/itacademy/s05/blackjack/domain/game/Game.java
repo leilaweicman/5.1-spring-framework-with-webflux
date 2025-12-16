@@ -1,35 +1,30 @@
 package cat.itacademy.s05.blackjack.domain.game;
 
-import cat.itacademy.s05.blackjack.domain.card.Card;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import cat.itacademy.s05.blackjack.domain.deck.Deck;
+import cat.itacademy.s05.blackjack.domain.hand.Hand;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Builder
-@Document("games")
+@Document(collection = "games")
 public class Game {
 
     @Id
     private String id;
 
     private Long playerId;
-
-    private List<Card> deck;
-    private List<Card> playerHand;
-    private List<Card> dealerHand;
-
     private GameStatus status;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime endedAt;
+    private Deck deck;
+
+    private Hand playerHand;
+    private Hand dealerHand;
 }
 
