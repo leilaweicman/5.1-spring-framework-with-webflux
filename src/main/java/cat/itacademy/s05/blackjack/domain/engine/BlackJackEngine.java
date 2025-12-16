@@ -1,5 +1,6 @@
 package cat.itacademy.s05.blackjack.domain.engine;
 
+import cat.itacademy.s05.blackjack.domain.card.Card;
 import cat.itacademy.s05.blackjack.domain.deck.Deck;
 import cat.itacademy.s05.blackjack.domain.game.Game;
 import cat.itacademy.s05.blackjack.domain.game.GameStatus;
@@ -41,7 +42,17 @@ public class BlackJackEngine {
      * Player requests a new card. If busts → loses immediately.
      */
     public Game playerHits(Game game) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (game.getStatus() != GameStatus.IN_PROGRESS) {
+            return game;
+        }
+        Card newCard = game.getDeck().drawCard();
+        game.getPlayerHand().addCard(newCard);
+
+        if (game.getPlayerHand().isBust()) {
+            game.setStatus(GameStatus.PLAYER_BUST);
+            return game;
+        }
+        return game;
     }
 
     /**
