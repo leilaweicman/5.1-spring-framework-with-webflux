@@ -1,6 +1,9 @@
 package cat.itacademy.s05.blackjack.domain.engine;
 
+import cat.itacademy.s05.blackjack.domain.deck.Deck;
 import cat.itacademy.s05.blackjack.domain.game.Game;
+import cat.itacademy.s05.blackjack.domain.game.GameStatus;
+import cat.itacademy.s05.blackjack.domain.hand.Hand;
 
 public class BlackJackEngine {
 
@@ -12,7 +15,26 @@ public class BlackJackEngine {
      * - Determines initial game status (blackjack or in progress)
      */
     public Game startNewGame(Long playerId) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        Deck deck = new Deck();
+
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+        playerHand.addCard(deck.drawCard());
+        playerHand.addCard(deck.drawCard());
+
+        dealerHand.addCard(deck.drawCard());
+        dealerHand.addCard(deck.drawCard());
+
+        GameStatus status = evaluateInitialStatus(playerHand, dealerHand);
+
+        return Game.builder()
+                .playerId(playerId)
+                .deck(deck)
+                .playerHand(playerHand)
+                .dealerHand(dealerHand)
+                .status(status)
+                .build();
     }
 
     /**
@@ -41,5 +63,12 @@ public class BlackJackEngine {
      */
     private void resolveWinner(Game game) {
         throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    private GameStatus evaluateInitialStatus(Hand player, Hand dealer) {
+        if (player.isBlackjack() && dealer.isBlackjack()) return GameStatus.TIE;
+        if (player.isBlackjack()) return GameStatus.PLAYER_BLACKJACK;
+        if (dealer.isBlackjack()) return GameStatus.DEALER_BLACKJACK;
+        return GameStatus.IN_PROGRESS;
     }
 }
