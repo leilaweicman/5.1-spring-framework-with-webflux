@@ -59,21 +59,50 @@ public class BlackJackEngine {
      * Player stands. Control passes to dealer.
      */
     public Game playerStands(Game game) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (game.getStatus() != GameStatus.IN_PROGRESS) {
+            return game;
+        }
+
+        dealerTurn(game);
+        resolveWinner(game);
+
+        return game;
     }
 
     /**
      * Dealer draws cards until reaching at least 17 points.
      */
     private void dealerTurn(Game game) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (game.getStatus() == GameStatus.DEALER_BUST) {
+            return;
+        }
+
+        Hand dealerHand = game.getDealerHand();
+        Deck deck = game.getDeck();
+
+        while (dealerHand.calculateScore() < 17) {
+            dealerHand.addCard(deck.drawCard());
+        }
+
+        if (dealerHand.isBust()) {
+            game.setStatus(GameStatus.DEALER_BUST);
+        }
     }
 
     /**
      * Determines the final winner after dealer finishes.
      */
     private void resolveWinner(Game game) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        int playerScore = game.getPlayerHand().calculateScore();
+        int dealerScore = game.getDealerHand().calculateScore();
+
+        if (playerScore > dealerScore) {
+            game.setStatus(GameStatus.PLAYER_WINS);
+        } else if (dealerScore > playerScore) {
+            game.setStatus(GameStatus.DEALER_WINS);
+        } else {
+            game.setStatus(GameStatus.TIE);
+        }
     }
 
     private GameStatus evaluateInitialStatus(Hand player, Hand dealer) {
