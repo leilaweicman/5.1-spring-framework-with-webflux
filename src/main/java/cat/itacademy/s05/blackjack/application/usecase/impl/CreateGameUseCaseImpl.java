@@ -1,0 +1,31 @@
+package cat.itacademy.s05.blackjack.application.usecase.impl;
+
+import cat.itacademy.s05.blackjack.application.usecase.CreateGameUseCase;
+import cat.itacademy.s05.blackjack.domain.exception.PlayerNotFoundException;
+import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
+import cat.itacademy.s05.blackjack.domain.repository.GameRepository;
+import cat.itacademy.s05.blackjack.domain.repository.PlayerRepository;
+import cat.itacademy.s05.blackjack.domain.service.BlackJackEngine;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+
+@Service
+@RequiredArgsConstructor
+public class CreateGameUseCaseImpl implements CreateGameUseCase {
+
+    private final PlayerRepository playerRepository;
+    private final GameRepository gameRepository;
+    private final BlackJackEngine engine;
+
+    @Override
+    public Mono<Game> create(Long playerId) {
+        return playerRepository.findById(playerId)
+                .switchIfEmpty(Mono.error(new PlayerNotFoundException(playerId)))
+                .flatMap(p -> {
+                    Game game = engine.startNewGame(playerId);
+                    return gameRepository.save(game);
+                });
+    }
+}
+
