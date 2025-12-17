@@ -8,7 +8,7 @@ import cat.itacademy.s05.blackjack.domain.model.valueobjects.Hand;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BlackJackEngine {
+public class GameEngine {
 
     /**
      * Initializes a new Blackjack game:

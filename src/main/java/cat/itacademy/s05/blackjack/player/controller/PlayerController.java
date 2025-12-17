@@ -1,7 +1,7 @@
 package cat.itacademy.s05.blackjack.player.controller;
 
-import cat.itacademy.s05.blackjack.player.dto.PlayerRequestDto;
-import cat.itacademy.s05.blackjack.player.dto.PlayerResponseDto;
+import cat.itacademy.s05.blackjack.application.dto.PlayerRequest;
+import cat.itacademy.s05.blackjack.application.dto.PlayerResponse;
 import cat.itacademy.s05.blackjack.player.mapper.PlayerMapper;
 import cat.itacademy.s05.blackjack.player.service.PlayerService;
 import jakarta.validation.Valid;
@@ -19,17 +19,17 @@ public class PlayerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<PlayerResponseDto> createPlayer(@RequestBody @Valid PlayerRequestDto request) {
+    public Mono<PlayerResponse> createPlayer(@RequestBody @Valid PlayerRequest request) {
         return playerService.createPlayer(request.name()).map(mapper::toResponse);
     }
 
     @PutMapping("/{id}")
-    public Mono<PlayerResponseDto> updatePlayerName(@PathVariable Long id, @RequestBody @Valid PlayerRequestDto request) {
+    public Mono<PlayerResponse> updatePlayerName(@PathVariable Long id, @RequestBody @Valid PlayerRequest request) {
         return playerService.updatePlayerName(id, request.name()).map(mapper::toResponse);
     }
 
     @GetMapping("/{id}")
-    public Mono<PlayerResponseDto> getPlayer(@PathVariable Long id) {
+    public Mono<PlayerResponse> getPlayer(@PathVariable Long id) {
         return playerService.findById(id).map(mapper::toResponse);
     }
 }

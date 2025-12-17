@@ -1,12 +1,12 @@
 package cat.itacademy.s05.blackjack.game.service;
 
-import cat.itacademy.s05.blackjack.domain.service.BlackJackEngine;
+import cat.itacademy.s05.blackjack.domain.service.GameEngine;
 import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameStatus;
 import cat.itacademy.s05.blackjack.domain.exception.GameNotFoundException;
 import cat.itacademy.s05.blackjack.domain.exception.InvalidGameActionException;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.MoveAction;
-import cat.itacademy.s05.blackjack.game.repository.GameRepository;
+import cat.itacademy.s05.blackjack.domain.repository.GameRepository;
 import cat.itacademy.s05.blackjack.domain.exception.PlayerNotFoundException;
 import cat.itacademy.s05.blackjack.player.service.PlayerService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class GameServiceImpl implements GameService {
 
     private final GameRepository gameRepository;
     private final PlayerService playerService;
-    private final BlackJackEngine engine;
+    private final GameEngine engine;
 
     @Override
     public Mono<Game> createGame(Long playerId) {

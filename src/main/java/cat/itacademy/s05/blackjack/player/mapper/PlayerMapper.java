@@ -1,14 +1,14 @@
 package cat.itacademy.s05.blackjack.player.mapper;
 
 import cat.itacademy.s05.blackjack.domain.model.aggregates.Player;
-import cat.itacademy.s05.blackjack.player.dto.PlayerResponseDto;
+import cat.itacademy.s05.blackjack.application.dto.PlayerResponse;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PlayerMapper {
 
-    public PlayerResponseDto toResponse(Player player) {
-        return new PlayerResponseDto(
+    public PlayerResponse toResponse(Player player) {
+        return new PlayerResponse(
                 player.getId(),
                 player.getName(),
                 player.getWins(),

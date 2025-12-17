@@ -4,7 +4,7 @@ import cat.itacademy.s05.blackjack.domain.model.aggregates.Player;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerRanking;
 import cat.itacademy.s05.blackjack.domain.exception.PlayerAlreadyExistsException;
 import cat.itacademy.s05.blackjack.domain.exception.PlayerNotFoundException;
-import cat.itacademy.s05.blackjack.player.repository.PlayerRepository;
+import cat.itacademy.s05.blackjack.domain.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
