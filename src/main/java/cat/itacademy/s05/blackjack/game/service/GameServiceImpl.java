@@ -1,13 +1,13 @@
 package cat.itacademy.s05.blackjack.game.service;
 
-import cat.itacademy.s05.blackjack.domain.engine.BlackJackEngine;
-import cat.itacademy.s05.blackjack.domain.game.Game;
-import cat.itacademy.s05.blackjack.domain.game.GameStatus;
-import cat.itacademy.s05.blackjack.game.exception.GameNotFoundException;
-import cat.itacademy.s05.blackjack.game.exception.InvalidGameActionException;
-import cat.itacademy.s05.blackjack.game.model.MoveAction;
+import cat.itacademy.s05.blackjack.domain.service.BlackJackEngine;
+import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameStatus;
+import cat.itacademy.s05.blackjack.domain.exception.GameNotFoundException;
+import cat.itacademy.s05.blackjack.domain.exception.InvalidGameActionException;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.MoveAction;
 import cat.itacademy.s05.blackjack.game.repository.GameRepository;
-import cat.itacademy.s05.blackjack.player.exception.PlayerNotFoundException;
+import cat.itacademy.s05.blackjack.domain.exception.PlayerNotFoundException;
 import cat.itacademy.s05.blackjack.player.service.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

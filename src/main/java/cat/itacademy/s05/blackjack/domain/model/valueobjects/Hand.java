@@ -1,7 +1,5 @@
-package cat.itacademy.s05.blackjack.domain.hand;
+package cat.itacademy.s05.blackjack.domain.model.valueobjects;
 
-import cat.itacademy.s05.blackjack.domain.card.Card;
-import cat.itacademy.s05.blackjack.domain.card.Rank;
 import lombok.Data;
 
 import java.util.ArrayList;

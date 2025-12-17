@@ -1,6 +1,6 @@
 package cat.itacademy.s05.blackjack.game.service;
 
-import cat.itacademy.s05.blackjack.domain.game.Game;
+import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
 import reactor.core.publisher.Mono;
 
 public interface GameService {

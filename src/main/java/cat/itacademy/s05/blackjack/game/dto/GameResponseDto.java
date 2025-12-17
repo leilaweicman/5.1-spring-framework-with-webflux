@@ -1,7 +1,7 @@
 package cat.itacademy.s05.blackjack.game.dto;
 
-import cat.itacademy.s05.blackjack.domain.card.Card;
-import cat.itacademy.s05.blackjack.domain.game.GameStatus;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.Card;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameStatus;
 import lombok.Builder;
 
 import java.util.List;

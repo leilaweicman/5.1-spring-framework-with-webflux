@@ -1,9 +1,9 @@
 package cat.itacademy.s05.blackjack.player.service;
 
-import cat.itacademy.s05.blackjack.domain.player.Player;
-import cat.itacademy.s05.blackjack.player.domain.PlayerRanking;
-import cat.itacademy.s05.blackjack.player.exception.PlayerAlreadyExistsException;
-import cat.itacademy.s05.blackjack.player.exception.PlayerNotFoundException;
+import cat.itacademy.s05.blackjack.domain.model.aggregates.Player;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerRanking;
+import cat.itacademy.s05.blackjack.domain.exception.PlayerAlreadyExistsException;
+import cat.itacademy.s05.blackjack.domain.exception.PlayerNotFoundException;
 import cat.itacademy.s05.blackjack.player.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

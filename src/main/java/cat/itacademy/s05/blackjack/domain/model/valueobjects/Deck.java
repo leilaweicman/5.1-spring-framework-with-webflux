@@ -1,8 +1,4 @@
-package cat.itacademy.s05.blackjack.domain.deck;
-
-import cat.itacademy.s05.blackjack.domain.card.Card;
-import cat.itacademy.s05.blackjack.domain.card.Rank;
-import cat.itacademy.s05.blackjack.domain.card.Suit;
+package cat.itacademy.s05.blackjack.domain.model.valueobjects;
 
 import java.util.ArrayList;
 import java.util.Collections;

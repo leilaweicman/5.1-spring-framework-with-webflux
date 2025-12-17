@@ -1,6 +1,6 @@
 package cat.itacademy.s05.blackjack.player.service;
 
-import cat.itacademy.s05.blackjack.domain.player.Player;
+import cat.itacademy.s05.blackjack.domain.model.aggregates.Player;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

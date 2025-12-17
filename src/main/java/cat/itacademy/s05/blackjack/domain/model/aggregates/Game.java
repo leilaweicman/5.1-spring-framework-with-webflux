@@ -1,7 +1,8 @@
-package cat.itacademy.s05.blackjack.domain.game;
+package cat.itacademy.s05.blackjack.domain.model.aggregates;
 
-import cat.itacademy.s05.blackjack.domain.deck.Deck;
-import cat.itacademy.s05.blackjack.domain.hand.Hand;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.Deck;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameStatus;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.Hand;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
