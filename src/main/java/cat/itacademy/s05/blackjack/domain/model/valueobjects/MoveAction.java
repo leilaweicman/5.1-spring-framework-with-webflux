@@ -1,6 +1,6 @@
-package cat.itacademy.s05.blackjack.game.model;
+package cat.itacademy.s05.blackjack.domain.model.valueobjects;
 
-import cat.itacademy.s05.blackjack.game.exception.InvalidGameActionException;
+import cat.itacademy.s05.blackjack.domain.exception.InvalidGameActionException;
 
 public enum MoveAction {
     HIT,

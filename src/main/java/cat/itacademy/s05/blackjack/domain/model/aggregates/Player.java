@@ -1,4 +1,4 @@
-package cat.itacademy.s05.blackjack.domain.player;
+package cat.itacademy.s05.blackjack.domain.model.aggregates;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

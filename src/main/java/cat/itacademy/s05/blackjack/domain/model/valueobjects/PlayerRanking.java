@@ -1,6 +1,6 @@
-package cat.itacademy.s05.blackjack.player.domain;
+package cat.itacademy.s05.blackjack.domain.model.valueobjects;
 
-import cat.itacademy.s05.blackjack.domain.player.Player;
+import cat.itacademy.s05.blackjack.domain.model.aggregates.Player;
 
 import java.util.Comparator;
 

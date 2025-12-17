@@ -1,9 +1,9 @@
 package cat.itacademy.s05.blackjack.common.error;
 
-import cat.itacademy.s05.blackjack.game.exception.GameNotFoundException;
-import cat.itacademy.s05.blackjack.game.exception.InvalidGameActionException;
-import cat.itacademy.s05.blackjack.player.exception.PlayerAlreadyExistsException;
-import cat.itacademy.s05.blackjack.player.exception.PlayerNotFoundException;
+import cat.itacademy.s05.blackjack.domain.exception.GameNotFoundException;
+import cat.itacademy.s05.blackjack.domain.exception.InvalidGameActionException;
+import cat.itacademy.s05.blackjack.domain.exception.PlayerAlreadyExistsException;
+import cat.itacademy.s05.blackjack.domain.exception.PlayerNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.server.reactive.ServerHttpRequest;

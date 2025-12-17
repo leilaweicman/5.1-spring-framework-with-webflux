@@ -1,10 +1,10 @@
-package cat.itacademy.s05.blackjack.domain.engine;
+package cat.itacademy.s05.blackjack.domain.service;
 
-import cat.itacademy.s05.blackjack.domain.card.Card;
-import cat.itacademy.s05.blackjack.domain.deck.Deck;
-import cat.itacademy.s05.blackjack.domain.game.Game;
-import cat.itacademy.s05.blackjack.domain.game.GameStatus;
-import cat.itacademy.s05.blackjack.domain.hand.Hand;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.Card;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.Deck;
+import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameStatus;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.Hand;
 import org.springframework.stereotype.Component;
 
 @Component

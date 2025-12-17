@@ -1,4 +1,4 @@
-package cat.itacademy.s05.blackjack.player.exception;
+package cat.itacademy.s05.blackjack.domain.exception;
 
 public class PlayerNotFoundException extends RuntimeException {
     public PlayerNotFoundException(Long id) {

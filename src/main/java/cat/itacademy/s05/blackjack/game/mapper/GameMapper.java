@@ -1,6 +1,6 @@
 package cat.itacademy.s05.blackjack.game.mapper;
 
-import cat.itacademy.s05.blackjack.domain.game.Game;
+import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
 import cat.itacademy.s05.blackjack.game.dto.GameResponseDto;
 import org.springframework.stereotype.Component;
 
