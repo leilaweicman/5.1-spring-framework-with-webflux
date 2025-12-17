@@ -1,0 +1,54 @@
+### HEALTHCHECK
+GET http://localhost:8080/actuator/health
+
+
+### Start a new game for player 3
+POST http://localhost:8080/game/new
+Content-Type: application/json
+
+{
+  "playerId": 3
+}
+
+> {%
+    client.global.set("gameId", response.body.id);
+%}
+
+### Get game details
+GET http://localhost:8080/game/{{gameId}}
+
+
+### Play move: HIT
+POST http://localhost:8080/game/{{gameId}}/play
+Content-Type: application/json
+
+{
+  "action": "HIT"
+}
+
+
+### Play move: STAND
+POST http://localhost:8080/game/{{gameId}}/play
+Content-Type: application/json
+
+{
+  "action": "STAND"
+}
+
+
+### Wrong action (should trigger InvalidGameActionException)
+POST http://localhost:8080/game/{{gameId}}/play
+Content-Type: application/json
+
+{
+  "action": "FLY"
+}
+
+
+### Get non-existing game (should trigger GameNotFoundException)
+GET http://localhost:8080/game/does-not-exist
+
+
+### Delete a game
+DELETE http://localhost:8080/game/{{gameId}}/delete
+
