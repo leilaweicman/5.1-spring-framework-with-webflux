@@ -1,8 +1,8 @@
 package cat.itacademy.s05.blackjack.game.controller;
 
-import cat.itacademy.s05.blackjack.game.dto.GameCreateRequestDto;
-import cat.itacademy.s05.blackjack.game.dto.GameMoveRequestDto;
-import cat.itacademy.s05.blackjack.game.dto.GameResponseDto;
+import cat.itacademy.s05.blackjack.application.dto.CreateGameRequest;
+import cat.itacademy.s05.blackjack.application.dto.PlayGameRequest;
+import cat.itacademy.s05.blackjack.application.dto.GameResponse;
 import cat.itacademy.s05.blackjack.game.mapper.GameMapper;
 import cat.itacademy.s05.blackjack.game.service.GameService;
 import jakarta.validation.Valid;
@@ -21,19 +21,19 @@ public class GameController {
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<GameResponseDto> createNewGame(@Valid @RequestBody GameCreateRequestDto request) {
+    public Mono<GameResponse> createNewGame(@Valid @RequestBody CreateGameRequest request) {
         return gameService.createGame(request.playerId())
                 .map(mapper::toResponse);
     }
 
     @GetMapping("/{id}")
-    public Mono<GameResponseDto> getGame(@PathVariable String id) {
+    public Mono<GameResponse> getGame(@PathVariable String id) {
         return gameService.getGame(id)
                 .map(mapper::toResponse);
     }
 
     @PostMapping("/{id}/play")
-    public Mono<GameResponseDto> playMove(@PathVariable String id, @Valid @RequestBody GameMoveRequestDto request) {
+    public Mono<GameResponse> playMove(@PathVariable String id, @Valid @RequestBody PlayGameRequest request) {
         return gameService.playMove(id, request.action())
                 .map(mapper::toResponse);
     }

@@ -1,4 +1,4 @@
-package cat.itacademy.s05.blackjack.player.repository;
+package cat.itacademy.s05.blackjack.domain.repository;
 
 import cat.itacademy.s05.blackjack.domain.model.aggregates.Player;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;

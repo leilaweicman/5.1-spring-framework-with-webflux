@@ -1,7 +1,7 @@
-package cat.itacademy.s05.blackjack.game.dto;
+package cat.itacademy.s05.blackjack.application.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record GameMoveRequestDto(
+public record PlayGameRequest(
         @NotBlank String action
 ) {}

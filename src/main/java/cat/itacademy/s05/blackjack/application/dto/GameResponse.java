@@ -1,4 +1,4 @@
-package cat.itacademy.s05.blackjack.game.dto;
+package cat.itacademy.s05.blackjack.application.dto;
 
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.Card;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameStatus;
@@ -7,7 +7,7 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record GameResponseDto(
+public record GameResponse(
         String id,
         Long playerId,
         GameStatus status,

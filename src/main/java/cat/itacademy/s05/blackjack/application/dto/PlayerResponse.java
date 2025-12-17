@@ -1,6 +1,6 @@
-package cat.itacademy.s05.blackjack.player.dto;
+package cat.itacademy.s05.blackjack.application.dto;
 
-public record PlayerResponseDto(
+public record PlayerResponse(
         Long id,
         String name,
         int wins,
