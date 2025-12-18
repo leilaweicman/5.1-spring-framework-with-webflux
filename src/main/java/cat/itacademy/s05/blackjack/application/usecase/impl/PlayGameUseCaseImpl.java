@@ -3,7 +3,8 @@ package cat.itacademy.s05.blackjack.application.usecase.impl;
 import cat.itacademy.s05.blackjack.application.usecase.PlayGameUseCase;
 import cat.itacademy.s05.blackjack.domain.exception.GameNotFoundException;
 import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
-import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerAction;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameId;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.MoveAction;
 import cat.itacademy.s05.blackjack.domain.repository.GameRepository;
 import cat.itacademy.s05.blackjack.domain.service.GameEngine;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +19,9 @@ public class PlayGameUseCaseImpl implements PlayGameUseCase {
     private final GameEngine engine;
 
     @Override
-    public Mono<Game> play(String gameId, PlayerAction action) {
+    public Mono<Game> play(GameId gameId, MoveAction action) {
         return gameRepository.findById(gameId)
-                .switchIfEmpty(Mono.error(new GameNotFoundException(gameId)))
+                .switchIfEmpty(Mono.error(new GameNotFoundException(gameId.value())))
                 .flatMap(game -> {
 
                     switch (action) {
