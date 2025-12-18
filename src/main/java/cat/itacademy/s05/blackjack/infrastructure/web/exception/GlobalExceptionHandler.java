@@ -1,4 +1,4 @@
-package cat.itacademy.s05.blackjack.common.error;
+package cat.itacademy.s05.blackjack.infrastructure.web.exception;
 
 import cat.itacademy.s05.blackjack.domain.exception.GameNotFoundException;
 import cat.itacademy.s05.blackjack.domain.exception.InvalidGameActionException;

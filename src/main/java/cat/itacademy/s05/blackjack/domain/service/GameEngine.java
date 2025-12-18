@@ -1,10 +1,7 @@
 package cat.itacademy.s05.blackjack.domain.service;
 
-import cat.itacademy.s05.blackjack.domain.model.valueobjects.Card;
-import cat.itacademy.s05.blackjack.domain.model.valueobjects.Deck;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.*;
 import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
-import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameStatus;
-import cat.itacademy.s05.blackjack.domain.model.valueobjects.Hand;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -32,7 +29,7 @@ public class GameEngine {
         GameStatus status = evaluateInitialStatus(playerHand, dealerHand);
 
         return Game.builder()
-                .playerId(playerId)
+                .playerId(new PlayerId(playerId))
                 .deck(deck)
                 .playerHand(playerHand)
                 .dealerHand(dealerHand)

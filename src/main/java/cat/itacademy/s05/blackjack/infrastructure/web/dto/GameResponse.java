@@ -1,4 +1,4 @@
-package cat.itacademy.s05.blackjack.application.dto;
+package cat.itacademy.s05.blackjack.infrastructure.web.dto;
 
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.Card;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameStatus;

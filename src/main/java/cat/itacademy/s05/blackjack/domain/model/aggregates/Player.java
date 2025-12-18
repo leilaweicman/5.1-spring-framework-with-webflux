@@ -1,24 +1,19 @@
 package cat.itacademy.s05.blackjack.domain.model.aggregates;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerId;
+import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerName;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 @Builder
-@Table("players")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Player {
-
-    @Id
-    private Long id;
-
-    private String name;
-
+    private PlayerId id;
+    private PlayerName name;
     private Integer wins;
     private Integer losses;
     private Integer totalGames;

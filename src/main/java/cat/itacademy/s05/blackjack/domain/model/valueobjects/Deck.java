@@ -34,5 +34,9 @@ public class Deck {
     public List<Card> getCardsSnapshot() {
         return new ArrayList<>(cards);
     }
+
+    public List<Card> getCards() {
+        return new ArrayList<>(cards);
+    }
 }
 
