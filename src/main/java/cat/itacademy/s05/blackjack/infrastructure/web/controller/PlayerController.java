@@ -9,6 +9,10 @@ import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerName;
 import cat.itacademy.s05.blackjack.infrastructure.web.dto.PlayerRequest;
 import cat.itacademy.s05.blackjack.infrastructure.web.dto.PlayerResponse;
 import cat.itacademy.s05.blackjack.infrastructure.web.mapper.PlayerDtoMapper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +24,10 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/players")
 @RequiredArgsConstructor
+@Tag(
+        name = "Players",
+        description = "Endpoints for managing Blackjack players and ranking"
+)
 public class PlayerController {
 
     private final CreatePlayerUseCase createPlayerUseCase;
@@ -29,6 +37,16 @@ public class PlayerController {
     private final PlayerDtoMapper mapper;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(
+            summary = "Create a new player",
+            description = "Creates a new Blackjack player if the chosen name is available.",
+            responses = {
+                    @ApiResponse(responseCode = "201", description = "Player created successfully"),
+                    @ApiResponse(responseCode = "409", description = "Player name already exists"),
+                    @ApiResponse(responseCode = "400", description = "Invalid request body")
+            }
+    )
     public Mono<ResponseEntity<PlayerResponse>> createPlayer(
             @Valid @RequestBody PlayerRequest request) {
 
@@ -37,15 +55,34 @@ public class PlayerController {
                 .map(dto -> ResponseEntity.status(HttpStatus.CREATED).body(dto));
     }
 
-    // GET PLAYER BY ID
     @GetMapping("/{id}")
-    public Mono<PlayerResponse> getPlayer(@PathVariable Long id) {
+    @Operation(
+            summary = "Get player by ID",
+            description = "Retrieves an existing player based on its identifier.",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Player found"),
+                    @ApiResponse(responseCode = "404", description = "Player not found")
+            }
+    )
+    public Mono<PlayerResponse> getPlayer(
+            @Parameter(description = "Player identifier")
+            @PathVariable Long id) {
         return getPlayerUseCase.get(new PlayerId(id))
                 .map(mapper::toResponse);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/name")
+    @Operation(
+            summary = "Update player's name",
+            description = "Updates the display name of an existing player.",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Player name updated"),
+                    @ApiResponse(responseCode = "404", description = "Player not found"),
+                    @ApiResponse(responseCode = "409", description = "New name already taken")
+            }
+    )
     public Mono<PlayerResponse> updateName(
+            @Parameter(description = "Player identifier")
             @PathVariable Long id,
             @Valid @RequestBody PlayerRequest request) {
 
@@ -54,6 +91,11 @@ public class PlayerController {
     }
 
     @GetMapping("/ranking")
+    @Operation(
+            summary = "Get player ranking",
+            description = "Returns an ordered list of players based on wins and total games played.",
+            responses = { @ApiResponse(responseCode = "200", description = "Ranking retrieved") }
+    )
     public Flux<PlayerResponse> getRanking() {
         return getRankingUseCase.getRanking()
                 .map(mapper::toResponse);
