@@ -17,4 +17,16 @@ public class Player {
     private Integer wins;
     private Integer losses;
     private Integer totalGames;
+
+    public void incrementWins() {
+        this.wins = this.wins + 1;
+    }
+
+    public void incrementLosses() {
+        this.losses = this.losses + 1;
+    }
+
+    public void incrementTotalGames() {
+        this.totalGames = this.totalGames + 1;
+    }
 }
