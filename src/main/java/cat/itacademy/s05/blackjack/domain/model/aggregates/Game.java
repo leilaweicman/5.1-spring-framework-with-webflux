@@ -78,4 +78,13 @@ public class Game {
     public void finishTie() {
         this.status = GameStatus.TIE;
     }
+
+    public void resolveWinner() {
+        int playerScore = this.playerHand.calculateScore();
+        int dealerScore = this.dealerHand.calculateScore();
+
+        if (playerScore > dealerScore) finishWithPlayerWin();
+        else if (dealerScore > playerScore) finishWithDealerWin();
+        else finishTie();
+    }
 }
