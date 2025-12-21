@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/games")
+@RequestMapping("/game")
 @RequiredArgsConstructor
 @Tag(
         name = "Game",
