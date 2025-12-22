@@ -1,5 +1,6 @@
 package cat.itacademy.s05.blackjack.domain.strategy;
 
+import cat.itacademy.s05.blackjack.domain.exception.InvalidGameActionException;
 import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
 import cat.itacademy.s05.blackjack.domain.service.GameEngine;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ public class StandActionStrategy implements PlayerActionStrategy {
 
     @Override
     public Game execute(Game game) {
-        if (!game.isInProgress()) return game;
+        if (!game.isInProgress()) throw new InvalidGameActionException("Cannot STAND: game is already finished");
 
         game.playDealerTurn();
 
