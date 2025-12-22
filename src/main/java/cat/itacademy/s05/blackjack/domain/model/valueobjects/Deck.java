@@ -13,6 +13,11 @@ public class Deck {
         shuffle();
     }
 
+    public Deck(List<Card> cards) {
+        this.cards = cards;
+        shuffle();
+    }
+
     private List<Card> generateDeck() {
         List<Card> deck = new ArrayList<>();
         for (Suit suit : Suit.values()) {
