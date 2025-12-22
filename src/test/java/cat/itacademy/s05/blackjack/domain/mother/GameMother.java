@@ -10,9 +10,15 @@ public class GameMother {
                 .id(new GameId("test-1"))
                 .playerId(new PlayerId(5L))
                 .status(GameStatus.IN_PROGRESS)
-                .deck(DeckMother.simpleDeck())
-                .playerHand(HandMother.emptyHand())
-                .dealerHand(HandMother.emptyHand())
+                .deck(DeckMother.randomDeck())
+                .playerHand(HandMother.withCards(
+                        CardMother.tenOfHearts(),
+                        CardMother.eightOfDiamonds()
+                ))
+                .dealerHand(HandMother.withCards(
+                        CardMother.nineOfDiamonds(),
+                        CardMother.fiveOfSpades()
+                ))
                 .build();
     }
 
@@ -21,7 +27,7 @@ public class GameMother {
                 .id(new GameId("test-bj"))
                 .playerId(new PlayerId(5L))
                 .status(GameStatus.IN_PROGRESS)
-                .deck(DeckMother.simpleDeck())
+                .deck(DeckMother.randomDeck())
                 .playerHand(HandMother.blackjackHand())
                 .dealerHand(HandMother.emptyHand())
                 .build();
