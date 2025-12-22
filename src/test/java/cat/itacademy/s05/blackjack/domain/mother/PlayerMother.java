@@ -5,10 +5,10 @@ import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerId;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerName;
 
 public class PlayerMother {
-    public static Player validPlayer() {
+    public static Player validPlayer(String name) {
         return Player.builder()
                 .id(new PlayerId(5L))
-                .name(new PlayerName("Stats Player"))
+                .name(new PlayerName(name))
                 .wins(0)
                 .losses(0)
                 .totalGames(0)

@@ -18,7 +18,6 @@ public class DeckMother {
     public static Deck deckWithNextCard(Card next) {
         List<Card> cards = new ArrayList<>();
         cards.add(next);
-        cards.addAll(CardMother.fullDeckWithout(next));
         return new Deck(cards);
     }
 
