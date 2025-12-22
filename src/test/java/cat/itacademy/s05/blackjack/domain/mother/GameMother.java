@@ -26,11 +26,33 @@ public class GameMother {
         return Game.builder()
                 .id(new GameId("test-bj"))
                 .playerId(new PlayerId(5L))
-                .status(GameStatus.IN_PROGRESS)
+                .status(GameStatus.PLAYER_BLACKJACK)
                 .deck(DeckMother.randomDeck())
                 .playerHand(HandMother.blackjackHand())
                 .dealerHand(HandMother.emptyHand())
                 .build();
     }
+
+    public static Game finishedGamePlayerWins() {
+        return Game.builder()
+                .id(new GameId("finished-win"))
+                .playerId(new PlayerId(5L))
+                .status(GameStatus.PLAYER_WINS)
+                .deck(DeckMother.randomDeck())
+                .playerHand(
+                        HandMother.withCards(
+                                CardMother.tenOfHearts(),
+                                CardMother.tenOfClubs()
+                        )
+                )
+                .dealerHand(
+                        HandMother.withCards(
+                                CardMother.nineOfDiamonds(),
+                                CardMother.eightOfDiamonds()
+                        )
+                )
+                .build();
+    }
+
 }
 

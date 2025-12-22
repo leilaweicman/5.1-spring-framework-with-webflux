@@ -37,6 +37,10 @@ public final class CardMother {
         return new Card(Rank.ACE, Suit.SPADES);
     }
 
+    public static Card tenOfClubs() {
+        return new Card(Rank.TEN, Suit.CLUBS);
+    }
+
     public static Card randomCard() {
         return new Card(Rank.values()[0], Suit.values()[0]);
     }
