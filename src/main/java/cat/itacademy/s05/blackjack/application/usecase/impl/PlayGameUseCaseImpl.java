@@ -7,7 +7,6 @@ import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameId;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.MoveAction;
 import cat.itacademy.s05.blackjack.domain.repository.GameRepository;
-import cat.itacademy.s05.blackjack.domain.strategy.PlayerActionStrategy;
 import cat.itacademy.s05.blackjack.domain.strategy.PlayerActionStrategyFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
@@ -24,14 +23,17 @@ public class PlayGameUseCaseImpl implements PlayGameUseCase {
 
     @Override
     public Mono<Game> play(GameId gameId, MoveAction action) {
-        PlayerActionStrategy strategy = strategyFactory.get(action);
 
         return gameRepository.findById(gameId)
                 .switchIfEmpty(Mono.error(new GameNotFoundException(gameId.value())))
-                .map(strategy::execute)
-                .flatMap(gameRepository::save)
-                .doOnSuccess(game ->
-                        game.pullEvents().forEach(eventPublisher::publishEvent)
-                );
+                .flatMap(game -> {
+                    var strategy = strategyFactory.get(action);
+                    Game updated = strategy.execute(game);
+                    var events = updated.pullEvents();
+                    return gameRepository.save(updated)
+                            .doOnSuccess(saved -> {
+                                events.forEach(eventPublisher::publishEvent);
+                            });
+                });
     }
 }

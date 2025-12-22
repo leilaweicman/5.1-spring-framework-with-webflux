@@ -4,8 +4,9 @@ import cat.itacademy.s05.blackjack.application.events.PlayerLostGameEvent;
 import cat.itacademy.s05.blackjack.application.events.PlayerWonGameEvent;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.*;
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,5 +80,14 @@ public class Game {
 
     public void finishTie() {
         this.status = GameStatus.TIE;
+    }
+
+    public void resolveWinner() {
+        int playerScore = this.playerHand.calculateScore();
+        int dealerScore = this.dealerHand.calculateScore();
+
+        if (playerScore > dealerScore) finishWithPlayerWin();
+        else if (dealerScore > playerScore) finishWithDealerWin();
+        else finishTie();
     }
 }

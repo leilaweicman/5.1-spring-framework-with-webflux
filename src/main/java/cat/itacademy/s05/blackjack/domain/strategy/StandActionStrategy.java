@@ -22,7 +22,7 @@ public class StandActionStrategy implements PlayerActionStrategy {
             return game;
         }
 
-        game = engine.resolveWinner(game);
+        game.resolveWinner();
 
         return game;
     }
