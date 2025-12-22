@@ -1,7 +1,7 @@
 package cat.itacademy.s05.blackjack.domain.model.aggregates;
 
-import cat.itacademy.s05.blackjack.domain.events.PlayerLostGameEvent;
-import cat.itacademy.s05.blackjack.domain.events.PlayerWonGameEvent;
+import cat.itacademy.s05.blackjack.application.events.PlayerLostGameEvent;
+import cat.itacademy.s05.blackjack.application.events.PlayerWonGameEvent;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.*;
 import lombok.*;
 

@@ -16,7 +16,6 @@ public class UpdatePlayerStatsUseCaseImpl implements UpdatePlayerStatsUseCase {
 
     @Override
     public Mono<Void> updateStats(Long playerId, boolean playerWon) {
-
         return playerRepository.findById(new PlayerId(playerId))
                 .switchIfEmpty(Mono.error(new PlayerNotFoundException(playerId)))
                 .flatMap(player -> {
@@ -26,7 +25,7 @@ public class UpdatePlayerStatsUseCaseImpl implements UpdatePlayerStatsUseCase {
                     if (playerWon) player.incrementWins();
                     else player.incrementLosses();
 
-                    return playerRepository.save(player).then();
-                });
+                    return playerRepository.save(player);
+                }).then();
     }
 }

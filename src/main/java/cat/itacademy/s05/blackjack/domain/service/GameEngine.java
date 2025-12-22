@@ -1,6 +1,5 @@
 package cat.itacademy.s05.blackjack.domain.service;
 
-import cat.itacademy.s05.blackjack.domain.events.PlayerLostGameEvent;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.*;
 import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
 import org.springframework.stereotype.Component;
