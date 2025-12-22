@@ -22,7 +22,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/players")
+@RequestMapping("/player")
 @RequiredArgsConstructor
 @Tag(
         name = "Players",

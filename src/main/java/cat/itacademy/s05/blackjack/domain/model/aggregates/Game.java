@@ -35,6 +35,28 @@ public class Game {
         domainEvents.add(event);
     }
 
+    public boolean isInProgress() {
+        return this.status == GameStatus.IN_PROGRESS;
+    }
+
+    public void hitPlayer() {
+        playerHand.addCard(deck.drawCard());
+    }
+
+    public boolean isPlayerBust() {
+        return playerHand.isBust();
+    }
+
+    public boolean isDealerBust() {
+        return dealerHand.isBust();
+    }
+
+    public void playDealerTurn() {
+        while (dealerHand.calculateScore() < 17) {
+            dealerHand.addCard(deck.drawCard());
+        }
+    }
+
     public void finishWithPlayerWin() {
         this.status = GameStatus.PLAYER_WINS;
         registerEvent(new PlayerWonGameEvent(playerId.value(), id.value()));
@@ -43,5 +65,19 @@ public class Game {
     public void finishWithDealerWin() {
         this.status = GameStatus.DEALER_WINS;
         registerEvent(new PlayerLostGameEvent(playerId.value(), id.value()));
+    }
+
+    public void finishWithPlayerBust() {
+        this.status = GameStatus.PLAYER_BUST;
+        registerEvent(new PlayerLostGameEvent(playerId.value(), id.value()));
+    }
+
+    public void finishWithDealerBust() {
+        this.status = GameStatus.DEALER_BUST;
+        registerEvent(new PlayerWonGameEvent(playerId.value(), id.value()));
+    }
+
+    public void finishTie() {
+        this.status = GameStatus.TIE;
     }
 }

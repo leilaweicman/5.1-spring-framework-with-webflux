@@ -7,13 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class GameEngine {
 
-    /**
-     * Initializes a new Blackjack game:
-     * - Creates a new shuffled deck
-     * - Deals two cards to player
-     * - Deals two cards to dealer
-     * - Determines initial game status (blackjack or in progress)
-     */
     public Game startNewGame(Long playerId) {
         Deck deck = new Deck();
 
@@ -37,71 +30,60 @@ public class GameEngine {
                 .build();
     }
 
-    /**
-     * Player requests a new card. If busts → loses immediately.
-     */
-    public Game playerHits(Game game) {
-        if (game.getStatus() != GameStatus.IN_PROGRESS) {
-            return game;
-        }
-        Card newCard = game.getDeck().drawCard();
-        game.getPlayerHand().addCard(newCard);
 
-        if (game.getPlayerHand().isBust()) {
-            game.setStatus(GameStatus.PLAYER_BUST);
-            return game;
-        }
-        return game;
-    }
+//    public Game playerHits(Game game) {
+//        if (game.getStatus() != GameStatus.IN_PROGRESS) {
+//            return game;
+//        }
+//        Card newCard = game.getDeck().drawCard();
+//        game.getPlayerHand().addCard(newCard);
+//
+//        if (game.getPlayerHand().isBust()) {
+//            game.setStatus(GameStatus.PLAYER_BUST);
+//            return game;
+//        }
+//        return game;
+//    }
+//
+//
+//    public Game playerStands(Game game) {
+//        if (game.getStatus() != GameStatus.IN_PROGRESS) {
+//            return game;
+//        }
+//
+//        dealerTurn(game);
+//        resolveWinner(game);
+//
+//        return game;
+//    }
+//
+//
+//    private void dealerTurn(Game game) {
+//        if (game.getStatus() == GameStatus.DEALER_BUST) {
+//            return;
+//        }
+//
+//        Hand dealerHand = game.getDealerHand();
+//        Deck deck = game.getDeck();
+//
+//        while (dealerHand.calculateScore() < 17) {
+//            dealerHand.addCard(deck.drawCard());
+//        }
+//
+//        if (dealerHand.isBust()) {
+//            game.setStatus(GameStatus.DEALER_BUST);
+//        }
+//    }
 
-    /**
-     * Player stands. Control passes to dealer.
-     */
-    public Game playerStands(Game game) {
-        if (game.getStatus() != GameStatus.IN_PROGRESS) {
-            return game;
-        }
-
-        dealerTurn(game);
-        resolveWinner(game);
-
-        return game;
-    }
-
-    /**
-     * Dealer draws cards until reaching at least 17 points.
-     */
-    private void dealerTurn(Game game) {
-        if (game.getStatus() == GameStatus.DEALER_BUST) {
-            return;
-        }
-
-        Hand dealerHand = game.getDealerHand();
-        Deck deck = game.getDeck();
-
-        while (dealerHand.calculateScore() < 17) {
-            dealerHand.addCard(deck.drawCard());
-        }
-
-        if (dealerHand.isBust()) {
-            game.setStatus(GameStatus.DEALER_BUST);
-        }
-    }
-
-    /**
-     * Determines the final winner after dealer finishes.
-     */
-    private void resolveWinner(Game game) {
+    public Game resolveWinner(Game game) {
         int playerScore = game.getPlayerHand().calculateScore();
         int dealerScore = game.getDealerHand().calculateScore();
 
-        if (playerScore > dealerScore) {
-            game.setStatus(GameStatus.PLAYER_WINS);
-        } else if (dealerScore > playerScore) {
-            game.setStatus(GameStatus.DEALER_WINS);
-        } else {
-            game.setStatus(GameStatus.TIE);
-        }
+        if (playerScore > dealerScore) game.finishWithPlayerWin();
+        else if (dealerScore > playerScore) game.finishWithDealerWin();
+        else game.finishTie();
+
+        return game;
     }
 
     private GameStatus evaluateInitialStatus(Hand player, Hand dealer) {
