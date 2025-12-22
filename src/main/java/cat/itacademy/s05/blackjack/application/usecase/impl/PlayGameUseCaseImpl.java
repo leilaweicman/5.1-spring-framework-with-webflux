@@ -2,6 +2,7 @@ package cat.itacademy.s05.blackjack.application.usecase.impl;
 
 import cat.itacademy.s05.blackjack.application.usecase.PlayGameUseCase;
 import cat.itacademy.s05.blackjack.domain.exception.GameNotFoundException;
+import cat.itacademy.s05.blackjack.domain.exception.InvalidGameActionException;
 import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameId;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.MoveAction;
