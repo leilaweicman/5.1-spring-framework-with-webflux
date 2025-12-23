@@ -5,12 +5,14 @@ import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerId;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerName;
 import cat.itacademy.s05.blackjack.domain.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
+@Profile("docker")
 public class PlayerRepositoryAdapter implements PlayerRepository {
 
     private final SpringDataPlayerRepository repository;
