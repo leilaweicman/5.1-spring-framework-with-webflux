@@ -8,11 +8,13 @@ import cat.itacademy.s05.blackjack.domain.repository.GameRepository;
 import cat.itacademy.s05.blackjack.domain.repository.PlayerRepository;
 import cat.itacademy.s05.blackjack.domain.service.GameEngine;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
+@Profile("docker")
 public class CreateGameUseCaseImpl implements CreateGameUseCase {
 
     private final PlayerRepository playerRepository;

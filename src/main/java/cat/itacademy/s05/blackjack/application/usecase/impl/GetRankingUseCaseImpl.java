@@ -5,11 +5,13 @@ import cat.itacademy.s05.blackjack.domain.model.aggregates.Player;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerRanking;
 import cat.itacademy.s05.blackjack.domain.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 @Service
 @RequiredArgsConstructor
+@Profile("docker")
 public class GetRankingUseCaseImpl implements GetRankingUseCase {
 
     private final PlayerRepository playerRepository;
