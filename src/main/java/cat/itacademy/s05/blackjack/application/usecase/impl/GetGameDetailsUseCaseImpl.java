@@ -6,11 +6,13 @@ import cat.itacademy.s05.blackjack.domain.model.aggregates.Game;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.GameId;
 import cat.itacademy.s05.blackjack.domain.repository.GameRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
+@Profile("docker")
 public class GetGameDetailsUseCaseImpl implements GetGameDetailsUseCase {
 
     private final GameRepository gameRepository;

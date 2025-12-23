@@ -4,11 +4,13 @@ import cat.itacademy.s05.blackjack.application.events.PlayerLostGameEvent;
 import cat.itacademy.s05.blackjack.application.events.PlayerWonGameEvent;
 import cat.itacademy.s05.blackjack.domain.model.valueobjects.PlayerId;
 import cat.itacademy.s05.blackjack.domain.repository.PlayerRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
+@Profile("docker")
 public class PlayerEventsHandler {
 
     private final PlayerRepository playerRepository;
