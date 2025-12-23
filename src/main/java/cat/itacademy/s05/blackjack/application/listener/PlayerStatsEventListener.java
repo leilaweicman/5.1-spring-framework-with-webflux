@@ -4,11 +4,13 @@ import cat.itacademy.s05.blackjack.application.usecase.UpdatePlayerStatsUseCase;
 import cat.itacademy.s05.blackjack.application.events.PlayerLostGameEvent;
 import cat.itacademy.s05.blackjack.application.events.PlayerWonGameEvent;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Profile("docker")
 public class PlayerStatsEventListener {
 
     private final UpdatePlayerStatsUseCase updateStats;
